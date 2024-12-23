@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wacky Chicky</title>
+    <link rel="stylesheet" href="works.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+</head>
+
+<body>
+    <div class="video-background">
+        <video id="background-video" muted playsinline>
+            <source src="desktop/fluidbackground.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="desktop/logonav.png" alt="My Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="resume.html"></a>
+            <a href="resume.html">Resume</a>
+            <a href="works.html">Works</a>
+            <a href="info.html">Info</a>
+        </nav>
+
+        <div class="hamburger" id="hamburger-icon">
+            &#9776; <!-- This is the hamburger icon -->
+        </div>
+
+    </header>
+
+    <div class="bg-container">
+        <img src="desktop/wacky/bg.png" alt="bg" class="cover-image" />
+    </div>
+    <main>
+
+        <div class="intro">
+        <!-- Title and Subtitle -->
+        <h1 class="reveal-on-scroll">WACKY CHICKY</h1>
+        <h2 class="reveal-on-scroll">Illustrator, Animator</h2>
+
+        <!-- Background Paragraph -->
+        <div class="background-paragraph">
+            <p class="reveal-on-scroll"><strong>“Wacky Chicky”</strong> is an <strong>interactive digital infographic</strong> that walks users through the process of building a farm in seven steps. With this project, we aim to provide an educational and entertaining experience for users with a variety of interactions. The illustrations employ a flat shading style and isometric perspective art with a farm background to make two-dimensional figures look more like three-dimensional ones. In addition, the layout simulates the game interface with a general map where players’ activities take place.  </p>
+
+            <p class="reveal-on-scroll"> In this project, I worked as one of the main illustrators. My illustration includes all of the background scenes, the typography for the title and some foreground elements. Besides, I took charge of making animation that helped create a more dynamic infographic. I also deeply participated in the ideation process.
+
+            <p class="reveal-on-scroll"> This project got an <strong>HD (High Distinction)</strong> mark and was shown on the <a
+                href="https://www.rmitvn-showcase.com/scd-dm-interaction/en/wacky-chicky" target="_blank"><strong>RMIT
+                Showcase Website</strong>.</a>
+            </p>
+        </div>
+</div>
+        <!-- Storyboard Section -->
+        <h2 class="reveal-on-scroll">LAYOUT</h2>
+        <div class="storyboard-container reveal-on-scroll">
+            <div class="storyboard">
+                <img src="desktop/wacky/intro.png" alt="Storyboard Image 8">
+                <img src="desktop/wacky/1.png" alt="Storyboard Image 1">
+                <img src="desktop/wacky/2.png" alt="Storyboard Image 2">
+                <img src="desktop/wacky/3.png" alt="Storyboard Image 3">
+                <img src="desktop/wacky/4.png" alt="Storyboard Image 4">
+                <img src="desktop/wacky/5.png" alt="Storyboard Image 5">
+                <img src="desktop/wacky/6.png" alt="Storyboard Image 6">
+                <img src="desktop/wacky/bg.png" alt="Storyboard Image 6">
+                <img src="desktop/wacky/outro.png" alt="Storyboard Image 7">
+            </div>
+        </div>
+
+        <!-- Showreel Section -->
+        <h2 class="reveal-on-scroll">SHOWREEL</h2>
+        <div class="showreel reveal-on-scroll">
+            <iframe src="https://www.youtube.com/embed/XaApL4kG13E" title="Wacky Chicky Showreel"></iframe>
+        </div>
+
+         <!-- Credits -->
+         <h2 class="reveal-on-scroll">CREDITS</h2>
+         <div class="background-paragraph">
+            <p class="credits reveal-on-scroll">
+                <span class="role">Illustration:</span> Do Bao Chau, Nguyen Anh Tuyen, Nguyen Tran Thuong Huyen<br>
+                <span class="role">Interactive Design:</span> Truong Nguyen Kieu My<br>
+                <span class="role">Animation:</span> Do Bao Chau<br>
+                <span class="role">Logos & Icons:</span> Nguyen Bao Linh
+            </p>
+
+      
+    </main>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="poem.html" class="nav-button">&laquo; Back</a>
+    <a href="abyss.html" class="nav-button"> Next &raquo;</a>
+</div>
+
+    <footer>
+        <div class="logofooter">
+            <img src="desktop/logofooter.png" alt="My Logo">
+            </a>
+        </div>
+        <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+        <p>
+            <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> |
+            <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+
+//BG VID
+const video = document.getElementById('background-video');
+
+// Wait for the video to load metadata
+video.addEventListener('loadedmetadata', () => {
+    video.playbackRate = 1; // Set normal playback initially
+    video.currentTime = 0; // Start from the beginning
+    playForward();
+});
+
+// Function to play the video forward
+function playForward() {
+    video.playbackRate = 1;
+    video.play();
+    video.onended = playReverse; // On end, play in reverse
+}
+
+// Function to play the video backward
+function playReverse() {
+    video.pause();
+    let reverseInterval = setInterval(() => {
+        video.currentTime -= 0.033; // Go backward (about 30 fps)
+
+        if (video.currentTime <= 0) {
+            clearInterval(reverseInterval); // Stop the interval
+            playForward(); // Restart forward playback
+        }
+    }, 33);
+}
+
+        //SCROLL
+        // Scroll Reveal Script
+        const observerOptions = {
+            root: null,            // Use the viewport as the root
+            threshold: 0.1         // Trigger when 50% of the element is visible
+        };
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                // When the element is in the viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');  // Add the revealed class
+                } else {
+                    entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, observerOptions);
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        // Observe all elements with the class 'reveal-on-scroll'
+        revealElements.forEach(element => observer.observe(element));
+
+  // Hamburger Menu Toggle
+  const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+
+        //SLIDE
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+
+        function showSlide(index) {
+            // Handle wraparound cases
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            // Hide all slides and reset active class
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+
+            // Show the current slide
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
+    
+
+    </script>
+
+</body>
+
+</html>

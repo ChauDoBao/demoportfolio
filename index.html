@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="desktop/logonav.png" alt="My Logo">
+    </a>
+    <nav class="nav-links">
+      <a href="resume.html"></a>
+      <a href="resume.html">Resume</a>
+      <a href="works.html">Works</a>
+      <a href="info.html">Info</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger-icon">
+      &#9776; <!-- This is the hamburger icon -->
+    </div>
+
+  </header>
+
+  <!-- Key Visual Section -->
+  <section class="key-visual">
+    <div class="image-stack">
+      <img src="desktop/home/bg.png" alt="Layer 1">
+      <img src="desktop/home/axe1.png" alt="Layer 2" class="axe axe1">
+      <img src="desktop/home/axe2.png" alt="Layer 3" class="axe axe2">
+      <img src="desktop/home/axe3down.png" alt="Layer 4" class="axe axe3">
+      <img src="desktop/home/axe4down.png" alt="Layer 6" class="axe axe4">
+      <img src="desktop/home/typo.png" alt="Layer 5" class="typo">
+      <img src="desktop/home/axe3up.png" alt="Layer 7" class="axe axe3">
+      <img src="desktop/home/axe4up.png" alt="Layer 8" class="axe axe4">
+    </div>
+    <div class="text-box">
+      <h2>A MULTI-DISCIPLINARY DESIGNER <br> BASED IN SAIGON, VIETNAM</h2>
+    </div>
+  </section>
+  <main>
+
+    <section class="scroll-down">
+      <svg class="circle-path-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+        <!-- Define a circular path -->
+        <defs>
+          <path id="circle" d="M 100,100 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" />
+        </defs>
+
+        <!-- Text follows the circular path -->
+        <text>
+          <textPath href="#circle" startOffset="0%" text-anchor="middle" id="rotating-text">
+            Scroll Down . Scroll Down . Scroll Down . Scroll Down .
+          </textPath>
+        </text>
+      </svg>
+
+    </section>
+
+
+    <section class="intro">
+      <h2 class="reveal-on-scroll">WELCOME TO BAO CHAU'S SITE</h2>
+      <p class="reveal-on-scroll">Choose your channel...</p>
+    </section>
+
+    <section class="boxes reveal-on-scroll">
+      <a href="resume.html" class="tv1">
+        <div class="tv1-container">
+          <div class="channel1">RESUME</div> <!-- The text div -->
+        </div> <!-- The image div -->
+      </a>
+      <a href="works.html" class="tv2">
+        <div class="tv2-container">
+          <div class="channel2">WORKS</div> <!-- The text div -->
+        </div> <!-- The image div -->
+      </a>
+      <a href="info.html" class="tv3">
+        <div class="tv3-container">
+          <div class="channel3">INFO</div> <!-- The text div -->
+        </div> <!-- The image div -->
+      </a>
+
+    </section>
+
+
+  </main>
+
+  <footer>
+    <div class="logofooter">
+      <img src="desktop/logofooter.png" alt="My Logo">
+      </a>
+    </div>
+    <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+    <p>
+      <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> |
+      <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> |
+      <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    // Scroll Reveal Script
+    const observerOptions = {
+      root: null,            // Use the viewport as the root
+      threshold: 0.1         // Trigger when 50% of the element is visible
+    };
+
+    function handleIntersection(entries, observer) {
+      entries.forEach(entry => {
+        // When the element is in the viewport
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');  // Add the revealed class
+        } else {
+          entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+    // Observe all elements with the class 'reveal-on-scroll'
+    revealElements.forEach(element => observer.observe(element));
+
+    // Select the textPath element
+    const textPath = document.getElementById('rotating-text');
+
+    // Function to animate the text along the circle path
+    function animateText() {
+      let offset = 0;
+      let direction = 1; // Start by animating in the forward direction (0% to 100%)
+
+      // Set an interval to animate the text
+      setInterval(() => {
+        offset += 0.1 * direction; // Adjust this value to control speed of rotation
+
+        // If offset exceeds 100%, reverse the direction (go back to 0%)
+        if (offset >= 100) {
+          direction = -1; // Reverse direction
+        }
+
+        // If offset goes below 0%, reverse the direction again (go forward to 100%)
+        if (offset <= 0) {
+          direction = 1; // Forward direction
+        }
+
+        // Set the updated startOffset value for the text
+        textPath.setAttribute('startOffset', offset + '%');
+      }, 10); // Update every 10ms for smoothness
+    }
+
+    // Start the animation
+    animateText();
+
+
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+  </script>
+
+</body>
+
+</html>

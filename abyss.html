@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call of the Abyss</title>
+    <link rel="stylesheet" href="works.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+</head>
+
+<body>
+    <div class="video-background">
+        <video id="background-video" muted playsinline>
+            <source src="desktop/fluidbackground.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="desktop/logonav.png" alt="My Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="resume.html"></a>
+            <a href="resume.html">Resume</a>
+            <a href="works.html">Works</a>
+            <a href="info.html">Info</a>
+        </nav>
+
+        <div class="hamburger" id="hamburger-icon">
+            &#9776; <!-- This is the hamburger icon -->
+        </div>
+
+    </header>
+
+    <div class="bg-container">
+        <img src="desktop/abyss/bg1.png" alt="bg" class="cover-image" />
+    </div>
+
+    <main>
+        <!-- Title and Subtitle -->
+        <h1 class="reveal-on-scroll">CALL OF THE ABYSS</h1>
+        <h2 class="reveal-on-scroll">Illustrator, Animator</h2>
+
+        <!-- Background Paragraph -->
+        <div class="background-paragraph">
+            <p class="reveal-on-scroll"><strong>“Call of the Abyss”</strong> is the website for a <strong>fictional underwater fundraising music concert</strong>. This
+                website aims to provide users with information and the opportunity not only to participate in this
+                concert but also to contribute to a friendly ecosystem through buying merchandise and tickets.
+                Therefore, the concert can be held successfully and the profits can be used to conserve the ocean by
+                planting corals. This project got an <strong>HD (High Distinction)</strong> mark and was shown on the <a
+                    href="https://www.rmitvn-showcase.com/scd-dm-interaction/en/call-of-the-abyss" target="_blank"><strong>RMIT
+                    Showcase Website</strong>.</a> </p>
+            <p class="reveal-on-scroll"> Before development from our team, the idea was originally mine so I participated deeply in refining the idea. Continuing my role from the last project, I was mainly in charge of illustrating assets such as the merch section, the tickets, the seat map, the location map, etc… I also created the title typography and animation. In terms of UX/UI design, I built the early mid-fidelity version of the website. </p>
+
+        </div>
+
+        <!-- Storyboard Section -->
+        <h2 class="reveal-on-scroll">DEVELOPING PROCESS</h2>
+        <div class="storyboard-container reveal-on-scroll">
+            <div class="midfideliy">
+                <img src="desktop/abyss/midfi1.png" alt="Storyboard Image 1">
+                <img src="desktop/abyss/midfi2.png" alt="Storyboard Image 2">
+            </div>
+        </div>
+
+        <!-- Main Scenes Slideshow Section -->
+        <h2 class="reveal-on-scroll">MOCKUPS</h2>
+        <div class="image-container reveal-on-scroll">
+            <div class="image-wrapper">
+                <img src="desktop/abyss/phonemockup.png" alt="Phone Mockup" class="foreground-image">
+            </div>
+            <img src="desktop/abyss/laptopmockup.png" alt="Laptop Mockup" class="background-image">
+        </div>        
+        
+
+        <!-- Showreel Section -->
+        <h2 class="reveal-on-scroll">SHOWREEL</h2>
+        <div class="showreel reveal-on-scroll">
+            <iframe src="https://www.youtube.com/embed/m921WVbrNQE" title="Call of the Abyss Showreel"></iframe>
+            <iframe src="https://www.youtube.com/embed/32rJNHcvJbU" title="Call of the Abyss Showreel"></iframe>
+        </div>
+
+         <!-- Credits -->
+         <h2 class="reveal-on-scroll">CREDITS</h2>
+         <div class="background-paragraph">
+            <p class="credits reveal-on-scroll">
+                <span class="role">Illustration:</span> Do Bao Chau, Nguyen Anh Tuyen, Nguyen Tran Thuong Huyen<br>
+                <span class="role">Interactive Design:</span> Truong Nguyen Kieu My<br>
+                <span class="role">Animation:</span> Do Bao Chau<br>
+                <span class="role">Logos & Icons:</span> Nguyen Bao Linh
+            </p>
+            
+
+
+    </main>
+ <!-- Navigation Buttons -->
+ <div class="nav-buttons">
+    <a href="chicky.html" class="nav-button">&laquo; Back</a>
+    <a href="3d.html" class="nav-button"> Next &raquo;</a>
+</div>
+
+    <footer>
+        <div class="logofooter">
+            <img src="desktop/logofooter.png" alt="My Logo">
+            </a>
+        </div>
+        <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+        <p>
+            <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> |
+            <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+        //BG VID
+        const video = document.getElementById('background-video');
+
+        // Wait for the video to load metadata
+        video.addEventListener('loadedmetadata', () => {
+            video.playbackRate = 1; // Set normal playback initially
+            video.currentTime = 0; // Start from the beginning
+            playForward();
+        });
+
+        // Function to play the video forward
+        function playForward() {
+            video.playbackRate = 1;
+            video.play();
+            video.onended = playReverse; // On end, play in reverse
+        }
+
+        // Function to play the video backward
+        function playReverse() {
+            video.pause();
+            let reverseInterval = setInterval(() => {
+                video.currentTime -= 0.033; // Go backward (about 30 fps)
+
+                if (video.currentTime <= 0) {
+                    clearInterval(reverseInterval); // Stop the interval
+                    playForward(); // Restart forward playback
+                }
+            }, 33);
+        }
+
+         // Hamburger Menu Toggle
+         const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+        //SCROLL
+        // Scroll Reveal Script
+        const observerOptions = {
+            root: null,            // Use the viewport as the root
+            threshold: 0.1         // Trigger when 50% of the element is visible
+        };
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                // When the element is in the viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');  // Add the revealed class
+                } else {
+                    entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, observerOptions);
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        // Observe all elements with the class 'reveal-on-scroll'
+        revealElements.forEach(element => observer.observe(element));
+
+        //SLIDE
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+
+        function showSlide(index) {
+            // Handle wraparound cases
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            // Hide all slides and reset active class
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+
+            // Show the current slide
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
+
+
+    </script>
+
+</body>
+
+</html>

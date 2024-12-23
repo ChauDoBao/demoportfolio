@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works</title>
+  <link rel="stylesheet" href="works.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="desktop/logonav.png" alt="My Logo">
+    </a>
+    <nav class="nav-links">
+      <a href="resume.html"></a>
+      <a href="resume.html">Resume</a>
+      <a href="works.html">Works</a>
+      <a href="info.html">Info</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger-icon">
+      &#9776; <!-- This is the hamburger icon -->
+    </div>
+  </header>
+  
+  <main>
+    <section class="intro"> 
+        <h1 class="title">RESUME</h1>
+        <p><a href="desktop/resume.png" download>Click here to download my resume</a></p>
+    </section>
+    <div class="resume-container">
+      </div>
+    
+  
+  </main>
+  
+
+  <footer>
+    <div class="logofooter">
+          <img src="desktop/logofooter.png" alt="My Logo">
+        </a>
+      </div>
+    <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+<p>
+  <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> | 
+  <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> | 
+  <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+</p>
+  </footer>
+
+ <!--SCRIPT-->
+ <script>
+
+    //SCROLL
+    // Scroll Reveal Script
+    const observerOptions = {
+        root: null,            // Use the viewport as the root
+        threshold: 0.1         // Trigger when 50% of the element is visible
+    };
+
+    function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            // When the element is in the viewport
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');  // Add the revealed class
+            } else {
+                entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+    // Observe all elements with the class 'reveal-on-scroll'
+    revealElements.forEach(element => observer.observe(element));
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+
+    </script>
+</body>
+</html>

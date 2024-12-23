@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[mao]</title>
+    <link rel="stylesheet" href="works.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+</head>
+
+<body>
+    <div class="video-background">
+        <video id="background-video" muted playsinline>
+            <source src="desktop/fluidbackground.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="desktop/logonav.png" alt="My Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="resume.html"></a>
+            <a href="resume.html">Resume</a>
+            <a href="works.html">Works</a>
+            <a href="info.html">Info</a>
+        </nav>
+
+        <div class="hamburger" id="hamburger-icon">
+            &#9776; <!-- This is the hamburger icon -->
+        </div>
+
+    </header>
+
+    <div class="bg-container">
+        <img src="desktop/vj/bg.png" alt="bg" class="cover-image" />
+    </div>
+
+    <main>
+        <!-- Title and Subtitle -->
+        <h1 class="reveal-on-scroll">[mao]</h1>
+        <h2 class="reveal-on-scroll">2D Motion Graphics Designer</h2>
+
+        <!-- Background Paragraph -->
+        <div class="background-paragraph">
+            <p class="reveal-on-scroll">In this group project, our team created a <strong>live VJ session</strong> for the song <strong>“The
+                Final Catdown (Extended)” by REDCVT </strong> with our original concept below:</p>
+            <p class="reveal-on-scroll"> A severe pandemic has devastated the world, allowing animals to take control
+                and divide humans into three distinct zones. Each zone is led by an animal representing one of three
+                important virtues: Humanity, Decorum, and Uprightness. A mascot guides the audience through these zones
+                to show what life is like for the animals that were once mistreated. </p>
+            <p class="reveal-on-scroll"> The leader of the zone is chosen by animals that have traits that are opposite
+                to the name of the land: </p>
+            <p class="reveal-on-scroll">The Humanity Zone: ruled by a rat, symbolizing darkness and cruelty. <br>
+                The Decorum Zone: ruled by a monkey due to its mischievous nature and lack of respect for rules. <br>
+                The Uprightness Zone: ruled by the ancient figure of justice, Anubis God, reminds us of fairness and
+                moral strength.
+            </p>
+        </div>
+
+
+        <!-- Main Scenes Slideshow Section -->
+        <h2 class="reveal-on-scroll">MAIN SCENES</h2>
+        <div class="slideshow-container reveal-on-scroll">
+            <div class="slideshow">
+                <img src="desktop/vj/1.png" alt="Scene 1">
+                <img src="desktop/vj/2.png" alt="Scene 2">
+                <img src="desktop/vj/3.png" alt="Scene 3">
+                <img src="desktop/vj/4.png" alt="Scene 4">
+                <img src="desktop/vj/5.png" alt="Scene 5">
+                <img src="desktop/vj/6.png" alt="Scene 6">
+                <img src="desktop/vj/7.png" alt="Scene 7">
+                <img src="desktop/vj/8.png" alt="Scene 8">
+                <img src="desktop/vj/9.png" alt="Scene 9">
+                <img src="desktop/vj/10.png" alt="Scene 10">
+                <img src="desktop/vj/11.png" alt="Scene 11">
+                <img src="desktop/vj/12.png" alt="Scene 12">
+                <img src="desktop/vj/13.png" alt="Scene 13">
+
+            </div>
+            <!-- Left Arrow -->
+            <div class="arrow arrow-left" onclick="prevSlide()">
+                <img src="desktop/left-arrow.png" alt="Previous Slide">
+            </div>
+            <!-- Right Arrow -->
+            <div class="arrow arrow-right" onclick="nextSlide()">
+                <img src="desktop/right-arrow.png" alt="Next Slide">
+            </div>
+        </div>
+
+        <!-- Showreel Section -->
+        <h2 class="reveal-on-scroll">SHOWREEL</h2>
+        <div class="showreel reveal-on-scroll">
+            <iframe src="https://www.youtube.com/embed/879y-DqTlmc" title="[mao] Showreel"></iframe>
+        </div>
+
+        <!-- Credits -->
+        <h2 class="reveal-on-scroll">CREDITS</h2>
+        <div class="background-paragraph">
+            <p class="credits reveal-on-scroll">
+                <span class="role">Midi Control:</span> Nguyen Anh Khoa, Trinh Thi Anh Tho<br>
+                <span class="role">3D:</span> Nguyen Anh Khoa, Truong Nguyen Kieu My<br>
+                <span class="role">2D:</span> Do Bao Chau, Nguyen Anh Tuyen<br>
+            </p>
+
+
+
+    </main>
+ <!-- Navigation Buttons -->
+ <div class="nav-buttons">
+    <a href="2d.html" class="nav-button">&laquo; Back</a>
+    <a href="poem.html" class="nav-button"> Next &raquo;</a>
+</div>
+
+    <footer>
+        <div class="logofooter">
+            <img src="desktop/logofooter.png" alt="My Logo">
+            </a>
+        </div>
+        <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+        <p>
+            <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> |
+            <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+        //BG VID
+        const video = document.getElementById('background-video');
+
+        // Wait for the video to load metadata
+        video.addEventListener('loadedmetadata', () => {
+            video.playbackRate = 1; // Set normal playback initially
+            video.currentTime = 0; // Start from the beginning
+            playForward();
+        });
+
+        // Function to play the video forward
+        function playForward() {
+            video.playbackRate = 1;
+            video.play();
+            video.onended = playReverse; // On end, play in reverse
+        }
+
+        // Function to play the video backward
+        function playReverse() {
+            video.pause();
+            let reverseInterval = setInterval(() => {
+                video.currentTime -= 0.033; // Go backward (about 30 fps)
+
+                if (video.currentTime <= 0) {
+                    clearInterval(reverseInterval); // Stop the interval
+                    playForward(); // Restart forward playback
+                }
+            }, 33);
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+        //SCROLL
+        // Scroll Reveal Script
+        const observerOptions = {
+            root: null,            // Use the viewport as the root
+            threshold: 0.1         // Trigger when 50% of the element is visible
+        };
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                // When the element is in the viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');  // Add the revealed class
+                } else {
+                    entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, observerOptions);
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        // Observe all elements with the class 'reveal-on-scroll'
+        revealElements.forEach(element => observer.observe(element));
+
+        //SLIDE
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+
+        function showSlide(index) {
+            // Handle wraparound cases
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            // Hide all slides and reset active class
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+
+            // Show the current slide
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
+
+
+    </script>
+
+</body>
+
+</html>
