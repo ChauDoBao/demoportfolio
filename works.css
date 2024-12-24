@@ -71,6 +71,7 @@ main {
     position: relative;        /* To position the image inside it */
     overflow: hidden;
     margin: 5vw 0vw;
+    margin-bottom: -20vw;
     background-color: transparent;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0.8) 94%, rgba(0, 0, 0, 0) 99%);
     -webkit-mask-size: cover;
@@ -118,7 +119,7 @@ h1 {
     font-weight: bold;
     font-size: 3rem;
     margin-bottom: 1vw;
-
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 h2 {
@@ -259,13 +260,13 @@ footer {
 
 /* Email Link Styling */
 footer a {
-    color: #fff;
+    color: #9ab1f0;
     text-decoration: none;
     transition: color 0.3s ease; /* Smooth color transition */
     margin: 0 0; /* Space between social links */
 }
 footer p {
-    margin: 0.5vw;
+    margin: 0.3vw;
     text-align: center;
 }
 
@@ -291,7 +292,7 @@ footer p a:hover {
     color: #e8e8e8;
     font-size: 1.2rem;
     line-height: 1.6;
-    margin-bottom: 10vw;
+    margin-bottom: 20vw;
     padding: 0vw 10vw;
 }
 
@@ -306,7 +307,7 @@ footer p a:hover {
     /* Hide anything outside of the container */
     display: flex;
     justify-content: center;
-    margin-bottom: 12vw;
+    margin-bottom: 20vw;
     padding: 0vw 10vw;
 }
 
@@ -349,7 +350,7 @@ footer p a:hover {
     /* Hide anything outside of the container */
     display: flex;
     justify-content: center;
-    margin-bottom: 12vw;
+    margin-bottom: 20vw;
     padding: 0vw 10vw;
 }
 
@@ -463,8 +464,14 @@ footer p a:hover {
     font-size: 2rem;
     padding: 0 1rem;
     cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: inline-block;
     z-index: 1;
 }
+
+.arrow-left:hover, .arrow-right:hover {
+    filter: brightness(2)
+  }
 
 .arrow-left {
     left: 5%; /* Adjust left arrow to be slightly to the left of the center */
@@ -493,25 +500,30 @@ footer p a:hover {
     justify-items: center;
     justify-content: space-between; /* Places image and text apart */
     flex-wrap: nowrap;
+    margin-bottom: 12vw;
+    padding: 0vw 10vw;
+    flex-direction: column; /* Stacks the image and text vertically */
+
 }
 
 .profile-container {
     flex: 1; /* Makes the image container take equal width */
-    padding: 0 2vw; /* Adds space between the image and text */
+    padding: 2vw 0vw; /* Adds space between the image and text */
     margin: 0;
 }
 
 .profile-container img {
     width: 100%; /* Make the image scale to fit the container */
-    height: auto; /* Keeps the aspect ratio intact */
     display: block;
+    object-fit: cover;
+    height: 100%;
 }
 
 .pro5-text-container {
     flex: 1; /* Makes the text container take equal width */
-    max-width: 70%; /* Limits the text container width */
-    padding-left: 2rem; /* Adds space between the text and image */
+    max-width: 100%; /* Limits the text container width */
     margin: 0;
+    padding: 2vw 0vw;
 
 }
 
@@ -557,20 +569,148 @@ footer p a:hover {
 .credits {
     text-align: center;
 }
+
+
 /*RESUME*/
-.resume-container {
+/*.resume-container {
     position: relative;
     width: 70vw;
     height: 70vh;
     overflow: hidden;
     margin-top: 5vw;
     animation: tv-glow 3s infinite, moveUpDown 3s infinite; /* Infinite glow animation */
-    background-image: url('desktop/resume.png');
+   /* background-image: url('desktop/resume.png');
     background-size: contain; /* Scale background image down */
-    background-repeat: no-repeat; /* Prevent repetition of background */
-    background-position: center; /* Center the background image */  }
+   /* background-repeat: no-repeat; /* Prevent repetition of background */
+    /*background-position: center; /* Center the background image */  
+.resume {
+    margin-top: 10vw;
+    margin-bottom: 0;
+    align-items: center;
+}
 
- 
+.resume p {
+    text-align: center;
+}
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 3vw;
+      }
+
+    /* Education Section */
+.education {
+    background-color: #000000;
+    box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
+    padding: 3vw 0;
+    margin-top: 5vw;
+    border-radius: 1vw;
+    width: 100%;
+    transition: 0.2s ease;
+  }
+
+.education:hover {
+    background-color: #3b559a;
+    box-shadow: 0 0 1vw 0.6vw #c5d2f7df; /* Subtle shadow */
+
+}
+
+  .education .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr)); /* Default 1 column for small screens */
+    gap: 20px;
+    justify-items: center;
+  }
+
+.education-item {
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .education-item .degree {
+    font-weight: bold;
+  }
+
+  /* Container Style */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Set max-width for better layout */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Skills Section */
+  .skills.software {
+    background-color: #000000;
+    box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
+    padding: 3vw 0;
+    margin-top: 5vw;
+    border-radius: 1vw;
+    width: 100%;
+    transition: 0.2s ease;
+
+  }
+  .skills.software:hover {
+    background-color: #3b559a;
+    box-shadow: 0 0 1vw 0.6vw #c5d2f7df; /* Subtle shadow */
+
+}
+  /* Grid Layout */
+  .software-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Default to 3 columns on smaller screens */
+    gap: 20px; /* Space between icons */
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .software-icon img {
+    width: 7vw;
+    height: 7vw;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 1vw;
+  }
+  
+  .software-icon img:hover {
+    transform: scale(1.1); /* Scaling effect */
+    filter: brightness(1.3); /* Brighten effect */
+  }
+
+  /* Creative Skills Section */
+.creative-skills {
+    background-color: #000000;
+    box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
+    padding: 3vw 0;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    border-radius: 1vw;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    transition: 0.2s ease;
+
+  }
+  .creative-skills:hover {
+    background-color: #3b559a;
+    box-shadow: 0 0 1vw 0.6vw #c5d2f7df; /* Subtle shadow */
+
+}
+  .creative-skills .list {
+    padding: 3vw 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1vw;
+    justify-items: center;
+   
+  }
+  
+  .creative-skills li {
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+  
 
   @keyframes tv-glow {
     0% {
@@ -609,6 +749,12 @@ footer p a:hover {
         grid-template-columns: repeat(2, 1fr);
         /* 2 items per row */
     }
+    .education .education-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr); /* Default 1 column for small screens */
+        gap: 20px;
+        justify-items: center;
+      }
 
 }
 
@@ -632,15 +778,19 @@ footer p a:hover {
     }
 
     .nav-links {
-        flex-direction: column;   
+        flex-direction: row;   
         position: absolute;  
-        top: 4vw;                 
+        top: 2vw;                 
         right: 0;
         justify-content: center;
         opacity: 0;
         visibility: hidden;
-        width: 17vw;              
+        align-items: center;
+        justify-items: center;
+        border-radius: 0;
+        width: 100vw;              
         background-color: #000;   
+        box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
         z-index: 1;               
         transform: translateY(-20%); /* Initial off-screen position */
         transition: transform 0.5s ease, opacity 0.3s ease; /* Define transition here */
@@ -671,8 +821,9 @@ footer p a:hover {
     }
 
     profile-container, .pro5-text-container {
-        max-width: 100%; /* Allows full width for both image and text */
-        padding: 0; /* Removes any extra padding */
+        width: 100%; /* Allows full width for both image and text */
+        height: 100%;
+        padding-bottom: 2vw; /* Removes any extra padding */
     }
 
     .pro5-text-container {
@@ -681,7 +832,7 @@ footer p a:hover {
 
     .profile-container img {
         width: 100%; /* Optional: Reduce image size for smaller screens */
-        height: auto; /* Maintain aspect ratio */
+        height: 100%; /* Maintain aspect ratio */
     }
 
     .resume-container {

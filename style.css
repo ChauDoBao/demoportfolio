@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
   }
   
   html {
@@ -33,7 +34,8 @@ body {
           opacity: 1;
       }
   }
-  
+
+
   .video-background {
     position: fixed;
     top: 0;
@@ -115,16 +117,19 @@ main, .game {
   width: 100%;
   height: 100%;
   overflow: visible;
+
 }
 
 .scroll-down {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   width: 100vw;
   height: 18vw;
   overflow: visible;
-  transform-origin: center center;  
+  transform-origin: center center; 
+  margin-top: -10vw; 
+  margin-bottom: 10vw;
 }
 
 
@@ -383,7 +388,7 @@ footer p a:hover {
     height: 25vw; /* Or any other height you prefer */
     width: 100%;
     animation: moveUpDown 5s ease-in-out infinite;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 1s ease, filter 0.3s ease;
   }
 
   .tv2 {
@@ -392,7 +397,7 @@ footer p a:hover {
     height: 25vw; /* Or any other height you prefer */
     width: 100%;
     animation: moveDownUp 5s ease-in-out infinite;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 1s ease, filter 0.3s ease;
   }
   
   .tv1 .tv1-container {
@@ -858,15 +863,19 @@ p, a {
     font-size: 0.9rem;
 }
 .nav-links {
-  flex-direction: column;   
+  flex-direction: row;   
   position: absolute;  
-  top: 4vw;                 
+  top: 2vw;                 
   right: 0;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  width: 17vw;              
+  align-items: center;
+  justify-items: center;
+  border-radius: 0;
+  width: 100vw;              
   background-color: #000;   
+  box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
   z-index: 1;               
   transform: translateY(-20%); /* Initial off-screen position */
   transition: transform 0.5s ease, opacity 0.3s ease; /* Define transition here */

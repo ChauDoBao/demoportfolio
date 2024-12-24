@@ -1,3 +1,44 @@
+
+
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger-icon');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // Toggle the "active" class
+});
+
+ //BG VID
+ const video = document.getElementById('background-video');
+
+ // Wait for the video to load metadata
+ video.addEventListener('loadedmetadata', () => {
+     video.playbackRate = 1; // Set normal playback initially
+     video.currentTime = 0; // Start from the beginning
+     playForward();
+ });
+ 
+ // Function to play the video forward
+ function playForward() {
+     video.playbackRate = 1;
+     video.play();
+     video.onended = playReverse; // On end, play in reverse
+ }
+ 
+ // Function to play the video backward
+ function playReverse() {
+     video.pause();
+     let reverseInterval = setInterval(() => {
+         video.currentTime -= 0.033; // Go backward (about 30 fps)
+ 
+         if (video.currentTime <= 0) {
+             clearInterval(reverseInterval); // Stop the interval
+             playForward(); // Restart forward playback
+         }
+     }, 33);
+ }
+ 
+
 // Get all slides
 const slides = document.querySelectorAll('.slide');
 
@@ -38,11 +79,3 @@ slides.forEach((slide, index) => {
 // Set the first slide as active on page load
 updateActiveSlide();
 
-
-// Hamburger Menu Toggle
-const hamburger = document.getElementById('hamburger-icon');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active'); // Toggle the "active" class
-});
