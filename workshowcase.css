@@ -15,8 +15,6 @@ html {
 
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
     margin: 0;
     padding: 0;
     display: flex;
@@ -53,12 +51,35 @@ main {
     
 }
 
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Send video behind content */
+}
+
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  /* Ensures video covers the screen */
+}
 
 h1 {
     text-align: center;
     color: #e8e8e8;
-    font-family: "New Science Extended", serif;
-    font-style: bold;
+    font-family: new-science-extended, sans-serif;
+    font-weight: bold;
     font-size: 3rem;
     margin-bottom: 1vw;
 
@@ -67,10 +88,21 @@ h1 {
 h2 {
     text-align: center;
     color: #e8e8e8;
-    font-family: "New Science Extended", serif;
-    font-style: semibold;
+    font-family: new-science-extended, sans-serif;    
+    font-weight: bold;
     font-size: 1.5rem;
     margin-bottom: 3vw;
+}
+
+p, a {
+    text-align: justify;
+    font-family: new-science, sans-serif;
+    font-style: normal;
+    font-size: 1rem;
+    margin-bottom: 2vw;
+    color: #e8e8e8;
+    text-decoration: none;
+
 }
 
 .title {
@@ -79,15 +111,6 @@ h2 {
     transform: translateY(5vw);
 }
 
-p, a {
-    text-align: justify;
-    font-family: "New Science", sans-serif;
-    font-style: light;
-    font-size: 1rem;
-    margin-bottom: 2vw;
-    color: #e8e8e8;
-
-}
 
 
 
@@ -137,6 +160,7 @@ nav a {
     text-decoration: none;
     margin-left: 3vw;
     margin-bottom: 0;
+
 }
 
 /* Default state for the navigation links */
@@ -154,6 +178,9 @@ nav {
     text-decoration: none;
     color: #fff;
     text-align: center;
+    font-family: new-science, sans-serif;
+    font-style: normal;
+    
 }
 
 .nav-buttons {
@@ -203,7 +230,7 @@ footer {
 
 /* Email Link Styling */
 footer a {
-    color: #fff;
+  color: #9ab1f0;
     text-decoration: none;
     transition: color 0.3s ease; /* Smooth color transition */
     margin: 0 0; /* Space between social links */
@@ -322,6 +349,15 @@ footer p a:hover {
     cursor: pointer;
     z-index: 1;
     width: 6vw;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: inline-block; /* Ensure the arrow is inline and can be hovered */
+    transform-origin: center; /* Scale the arrow from its center */
+  }
+
+  
+  /* Hover Effect for Arrows */
+  .arrow-left:hover, .arrow-right:hover {
+    filter: brightness(2)
   }
   
   .arrow-left {
@@ -457,6 +493,16 @@ footer p a:hover {
     font-size: 1.15vw;
   }
   
+  .text-column h2 {
+
+      text-align: left;
+      color: #000000;
+      font-family: new-science-extended, sans-serif;    
+      font-weight: bold;
+      font-size: 1.7vw;
+      margin-bottom: 0vw;
+  }
+  
   /* Image column */
   .image-column {
     width: 40%; /* Half of the slide width for image */
@@ -465,13 +511,16 @@ footer p a:hover {
     position: absolute;
     top: 24.5vw;
     left: 37vw;    
+    
   }
   
   .image-column img {
     width: 100%; /* Make the image fill the column */
     height: auto;
-    filter: saturate(0.7) hue-rotate(5deg); /* Increase saturation and hue-rotate for more noticeable effects */
+    filter: grayscale(0.98) saturate(3) hue-rotate(20deg) contrast(1.2); /* Increase saturation and hue-rotate for more noticeable effects */
     border-radius: 0.6vw;
+    background-color: #7ba0e9;
+    mix-blend-mode: color;
 
 }
 
@@ -522,7 +571,7 @@ footer p a:hover {
 @media (max-width: 768px) {
 
     h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
 
     h2 {
@@ -531,7 +580,7 @@ footer p a:hover {
 
 
     p, a,  .text-column p {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
 
     .storyboard {
@@ -539,19 +588,23 @@ footer p a:hover {
     }
 
     .nav-links {
-        flex-direction: column;   
-        position: absolute;  
-        top: 4vw;                 
-        right: 0;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        width: 17vw;              
-        background-color: #000;   
-        z-index: 1;               
-        transform: translateY(-20%); /* Initial off-screen position */
-        transition: transform 0.5s ease, opacity 0.3s ease; /* Define transition here */
-    }
+      flex-direction: row;   
+      position: absolute;  
+      top: 2vw;                 
+      right: 0;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      align-items: center;
+      justify-items: center;
+      border-radius: 0;
+      width: 100vw;              
+      background-color: #000;   
+      box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
+      z-index: 1;               
+      transform: translateY(-20%); /* Initial off-screen position */
+      transition: transform 0.5s ease, opacity 0.3s ease; /* Define transition here */
+  }
     
     nav a {
         margin: 2vw;
@@ -596,7 +649,7 @@ margin: 10vw 0;
     }
     .slide {
         position: absolute;
-        max-width: 100%; /* Scale within the container */
+        max-width: 90%; /* Scale within the container */
     max-height: 100%; }
 
 .slide1 {
@@ -690,9 +743,19 @@ margin: 10vw 0;
 
   }
 
+  .text-column h2 {
+    text-align: center;
+    color: #000000;
+    font-family: new-science-extended, sans-serif;    
+    font-weight: bold;
+    font-size: 2.3vw;
+    margin-bottom: 0vw;
+}
+
   .text-column p {
     color: #000000;
     text-align: center;
+    font-size: 2vw;
   }
   
   /* Image column */
@@ -701,21 +764,22 @@ margin: 10vw 0;
     padding: 1rem;
     z-index: 2; /* Ensure the image stays above the folder image */
     position: absolute;
-    top: 15vw;
+    top: 17vw;
     left: 6vw;    
+    margin-bottom: 0;
   }
   
   .image-column img {
     width: 100%; /* Make the image fill the column */
     height: auto;
-    filter: saturate(0.7) hue-rotate(5deg); /* Increase saturation and hue-rotate for more noticeable effects */
+    filter: grayscale(0.98) saturate(3) hue-rotate(20deg) contrast(1.2); /* Increase saturation and hue-rotate for more noticeable effects */
     border-radius: 0.6vw;
 
 }
 }
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.4rem;
+        font-size: 2rem;
     }
 
     h2 {
@@ -723,7 +787,12 @@ margin: 10vw 0;
     }
 
     p, a {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
     
+    .text-column p {
+        color: #000000;
+        text-align: center;
+        font-size: 2vw;
+      }
 }

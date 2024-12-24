@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
   }
   
   html {
     font-size: 17px;
     /* Changes 1rem to equal 17px */
     background-color: #000;
+    height: 100%;
+
 }
 /* General styles */
 body {
@@ -15,6 +18,7 @@ body {
     margin: 0;
     padding: 0;
     background: #000000;
+    height: 100%;
     color: #333;
     overflow-x: hidden;
     justify-content: center;  /* Center horizontally */
@@ -30,13 +34,37 @@ body {
           opacity: 1;
       }
   }
-  
-  
+
+
+  .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Send video behind content */
+}
+
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    /* Ensures video covers the screen */
+}
+
 
   h1 {
     text-align: center;
     color: #e8e8e8;
-    font-family: "New Science Extended", serif;
+    font-family: new-science-extended, sans-serif;
     font-style: bold;
     font-size: 3rem;
     margin-bottom: 1vw;
@@ -45,8 +73,8 @@ body {
 
 h2 {
     text-align: center;
-    color: #f6f6f6;
-    font-family: "New Science Extended", serif;
+    color: #e8e8e8;
+    font-family: new-science-extended, sans-serif;    
     font-style: semibold;
     font-size: 1.5rem;
     margin-bottom: 3vw;
@@ -54,17 +82,22 @@ h2 {
 
 p, a {
     text-align: justify;
-    font-family: "New Science", sans-serif;
-    font-style: light;
+    font-family: new-science, sans-serif;
+    font-style: normal;
     font-size: 1rem;
     margin-bottom: 2vw;
     color: #e8e8e8;
+    text-decoration: none;
 
 }
 
+p {
+  line-height: 1.6;
+}
+
 text {
-  font-family: "New Science", sans-serif;
-    font-style: light;
+  font-family: new-science, sans-serif;
+  font-style: normal;
     font-size: 1.3rem;
     fill: #e6e6e6;
     text-anchor: middle;
@@ -74,7 +107,7 @@ text {
   text-align: center;
 }
 
-main {
+main, .game {
   padding: 2vw 4vw;
   margin: 10vw 0vw;
 }
@@ -84,16 +117,19 @@ main {
   width: 100%;
   height: 100%;
   overflow: visible;
+
 }
 
 .scroll-down {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   width: 100vw;
   height: 18vw;
   overflow: visible;
-  transform-origin: center center;  
+  transform-origin: center center; 
+  margin-top: -10vw; 
+  margin-bottom: 10vw;
 }
 
 
@@ -206,10 +242,11 @@ footer {
   background-size: contain; /* Makes the image fill the container */
   background-position: center; /* Center the image */
   background-repeat: no-repeat;
-  bottom: -2vw;
+  bottom: 0;
   width: 100%;
   height: 25vw;
   left: 0;
+  margin-top: auto;
   /* Push footer to the bottom */
 }
 
@@ -229,7 +266,7 @@ footer {
 
 /* Email Link Styling */
 footer a {
-  color: #fff;
+  color: #9ab1f0;
   text-decoration: none;
   transition: color 0.3s ease; /* Smooth color transition */
   margin: 0 0; /* Space between social links */
@@ -295,8 +332,8 @@ footer p a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain; /* Ensure the typo image is fully visible without cropping */
     object-position: center center; /* Keep the typo image centered */
     animation: moveScaleTypo 5s ease-in-out infinite;
@@ -344,12 +381,14 @@ footer p a:hover {
     animation: tv-glow 3s infinite; /* Infinite glow animation */
   }
   
+
   
   .tv1, .tv3 {
     position: relative;
     height: 25vw; /* Or any other height you prefer */
     width: 100%;
     animation: moveUpDown 5s ease-in-out infinite;
+    transition: transform 1s ease, filter 0.3s ease;
   }
 
   .tv2 {
@@ -358,6 +397,7 @@ footer p a:hover {
     height: 25vw; /* Or any other height you prefer */
     width: 100%;
     animation: moveDownUp 5s ease-in-out infinite;
+    transition: transform 1s ease, filter 0.3s ease;
   }
   
   .tv1 .tv1-container {
@@ -382,13 +422,18 @@ footer p a:hover {
     text-align: center;
     z-index: 2; /* Ensure the text appears on top of the background */
     color: #12224e;
-    font-family: "New Science Extended", serif;
+    font-family: new-science-extended, serif;
     font-weight: bold;
     font-size: 1.8vw;
   }
   
   .channel1:hover, .channel2:hover, .channel3:hover {
     animation: glitch-effect 0.1s infinite;
+  }
+
+  .tv1-container:hover, .tv2-container:hover, .tv3-container:hover {
+    filter: brightness(1.3); /* Increase brightness */
+    transform: scale(1.1); /* Scale the container */
   }
 
   @keyframes glitch-effect {
@@ -554,6 +599,8 @@ footer p a:hover {
   width: 6vw;
 }
 
+
+
 .arrow-left {
   left: 5%; /* Adjust left arrow to be slightly to the left of the center */
   transform: translate(-50%, -50%); /* Keep it centered vertically */
@@ -656,7 +703,87 @@ footer p a:hover {
   transform: translateX(10px);  /* Slightly shift next slide */
 }
 
+/*GAME*/
+.game {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; 
+  text-align: center;
+  height: 80%;
+  padding: 2vw 4vw;
+  margin: 10vw 0vw;
 
+}
+
+.game p{
+  text-align: center;
+}
+
+button {
+  display: block; /* Forces each button to appear on a new line */
+  margin: 5vw auto; /* Center buttons and add vertical spacing */
+  padding: 1vw 1.5vw;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 1px;
+  color: #ffffff; /* Text color */
+  background-color: #000000; /* Button background color */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 0 10px 5px #637ecab6; /* Subtle shadow */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: all 0.3s ease; /* Smooth transition */
+  text-align: center; /* Center align text */
+}
+
+button:hover{
+  box-shadow: 0 0 15px 5px #8ea8f1; /* Subtle shadow */
+
+}
+
+
+button.option {
+  width: 100%;
+  border: none;
+  max-width: 60vw; /* Limit width for better responsiveness */
+  margin: 5vw auto; /* Center and add spacing */
+  padding: 15px 20px; /* Slightly larger padding */
+  background-color: #637ecab6; /* Specific color for game options */
+  color: #ffffff;
+}
+
+/* Next button customization */
+button#next-btn-1,
+button#next-btn-2,
+button#next-btn-3,
+button#next-btn-4,
+button#next-btn-5,
+button#next-btn-6,
+button#next-btn-7 {
+  background-color: #000000; /* Button background color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 0 10px 5px #637ecab6; /* Subtle shadow */
+}
+
+/* Hover effect for Next buttons */
+button#next-btn-1:hover,
+button#next-btn-2:hover,
+button#next-btn-3:hover,
+button#next-btn-4:hover,
+button#next-btn-5:hover,
+button#next-btn-6:hover,
+button#next-btn-7:hover {
+  box-shadow: 0 0 15px 5px #8ea8f1; /* Subtle shadow */ }
+
+/* Hover effect for game options */
+button.option:hover {
+  background-color: #8ea8f1; /* Slightly darker green */
+}
+
+/* Result Section */
+.result {
+  display: none;
+}
 
 /*RESPONSIVE*/
 /* For screens between 768px and 1200px */
@@ -724,27 +851,31 @@ h2 {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
 }
 
 h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 
 p, a {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 .nav-links {
-  flex-direction: column;   
+  flex-direction: row;   
   position: absolute;  
-  top: 4vw;                 
+  top: 2vw;                 
   right: 0;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  width: 17vw;              
+  align-items: center;
+  justify-items: center;
+  border-radius: 0;
+  width: 100vw;              
   background-color: #000;   
+  box-shadow: 0 0 1vw 0.6vw #637eca99; /* Subtle shadow */
   z-index: 1;               
   transform: translateY(-20%); /* Initial off-screen position */
   transition: transform 0.5s ease, opacity 0.3s ease; /* Define transition here */
@@ -782,7 +913,7 @@ nav a {
   }
 
     h1 {
-      font-size: 1.4rem;
+      font-size: 2rem;
   }
 
   h2 {
@@ -790,7 +921,7 @@ nav a {
   }
 
   p, a {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
   }
 }
 

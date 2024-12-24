@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+</head>
+
+<body>
+    <div class="video-background">
+        <video id="background-video" muted playsinline>
+            <source src="desktop/fluidbackground.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="desktop/logonav.png" alt="My Logo">
+    </a>
+    <nav class="nav-links">
+      <a href="resume.html">Resume</a>
+      <a href="works.html">Works</a>
+      <a href="info.html">Info</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger-icon">
+      &#9776; <!-- This is the hamburger icon -->
+    </div>
+  </header>
+
+  <section class="game">
+    <!-- Step 1: Introduction -->
+    <div class="step-1">
+      <h1>Welcome to the Balance Game!</h1>
+      <p class="intro-text">You thought this was just another info page? Think again!<br>Let’s find out our compatibility percentage with a fun balance game!</p>
+      <button onclick="showNextStep()">Start</button>
+    </div>
+  
+    <!-- Step 2: About Me -->
+    <div class="step-2" style="display: none;">
+      <p class="about-me">
+        <h2>But first, let me introduce myself</h2> <p>I’m Bao Chau, a multidisciplinary designer based in Saigon (but I could totally call Hanoi home too). <br>I’m all about creating designs that not only meet people’s needs but also fulfill my own creative passion. <br>I find inspiration in all kinds of art—whether it's music, books, or movies. <br>If you want to reach out, just hit the link in the footer. I’m always open to connecting! </p>
+      </p>
+      <button onclick="showNextStep()">Next</button>
+    </div>
+
+
+    <!-- Question 1 -->
+    <div class="game-container">
+<div class="step-3 question" id="question-1" style="display: none;">
+    <h2>1. Pick Your Creative Process</h2>
+        <button class="option" data-choice="A" data-question="1">A. I prefer brainstorming in a group with lots of feedback.</button>
+        <button class="option" data-choice="B" data-question="1">B. I like to start solo and refine my ideas before showing them to anyone.</button>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="step-4 question" id="question-2" style="display: none;">
+        <h2>2. Pick Your Workspace Vibe</h2>
+        <button class="option" data-choice="A" data-question="2">A. A minimalist, clean workspace with only the essentials—less is more!</button>
+        <button class="option" data-choice="B" data-question="2">B. A creative chaos zone where inspiration is everywhere—papers, sketches, and snacks.</button>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="step-5 question" id="question-3" style="display: none;">
+        <h2>3. Pick Our Design Inspiration</h2>
+        <button class="option" data-choice="A" data-question="3">A. I draw inspiration from nature, photography, and real-world textures.</button>
+        <button class="option" data-choice="B" data-question="3">B. I’m inspired by trends, pop culture, and the latest design blogs.</button>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="step-6 question" id="question-4" style="display: none;">
+        <h2>4. Pick Your Design Philosophy</h2>
+        <button class="option" data-choice="A" data-question="4">A. I’m all about the perfect aesthetics—form over function!</button>
+        <button class="option" data-choice="B" data-question="4">B. Functionality is king—design is all about usability first and foremost.</button>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="step-7 question" id="question-5" style="display: none;">
+        <h2>5. Pick Your Color Palette</h2>
+        <button class="option" data-choice="A" data-question="5">A. I’m a sucker for bold and vibrant colors that pop!</button>
+        <button class="option" data-choice="B" data-question="5">B. I prefer muted tones and elegant neutrals—keeping it subtle and sophisticated.</button>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="step-8 question" id="question-6" style="display: none;">
+        <h2>6. Pick Your Deadline Strategy</h2>
+        <button class="option" data-choice="A" data-question="6">A. I thrive under pressure—give me that last-minute rush, and I’ll create a masterpiece.</button>
+        <button class="option" data-choice="B" data-question="6">B. I like to plan ahead and leave plenty of time for revisions and testing.</button>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="step-9 question" id="question-7" style="display: none;">
+        <h2>7. Pick Your Favorite Design Trend</h2>
+        <button class="option" data-choice="A" data-question="7">A. Flat design—all about simplicity and clarity</button>
+        <button class="option" data-choice="B" data-question="7">B. Skeuomorphism—because we all secretly love a bit of texture and depth</button>
+      </div>
+
+      <!-- Final Result Section -->
+      <div class="result" style="display: none;">
+        <h2>Compatibility: <span id="compatibility-percentage">0</span>%</h2>
+        <p id="compatibility-description">Let's see how well we match!</p>
+        <button onclick="shareResults()">Share Results To Me On Instagram</button>
+      </div>
+    </section>
+
+
+    <footer>
+        <div class="logofooter">
+          <img src="desktop/logofooter.png" alt="My Logo">
+          </a>
+        </div>
+        <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+        <p>
+          <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> |
+          <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> |
+          <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+        </p>
+      </footer>
+
+  <script>
+    //BG VID
+const video = document.getElementById('background-video');
+
+// Wait for the video to load metadata
+video.addEventListener('loadedmetadata', () => {
+    video.playbackRate = 1; // Set normal playback initially
+    video.currentTime = 0; // Start from the beginning
+    playForward();
+});
+
+// Function to play the video forward
+function playForward() {
+    video.playbackRate = 1;
+    video.play();
+    video.onended = playReverse; // On end, play in reverse
+}
+
+// Function to play the video backward
+function playReverse() {
+    video.pause();
+    let reverseInterval = setInterval(() => {
+        video.currentTime -= 0.033; // Go backward (about 30 fps)
+
+        if (video.currentTime <= 0) {
+            clearInterval(reverseInterval); // Stop the interval
+            playForward(); // Restart forward playback
+        }
+    }, 33);
+}
+
+
+
+// BALANCE GAME
+let currentStep = 1; // Tracks the current step (intro and questions)
+let userChoices = [];
+const myChoices = ['A', 'B', 'B', 'A', 'B', 'A', 'B']; // Your choices for compatibility comparison
+
+// Start the game by showing the first step
+function showNextStep() {
+  const currentStepElement = document.querySelector(`.step-${currentStep}`);
+  if (currentStepElement) {
+    currentStepElement.style.display = 'none';
+  }
+
+  currentStep++;
+
+  const nextStepElement = document.querySelector(`.step-${currentStep}`);
+  if (nextStepElement) {
+    nextStepElement.style.display = 'block';
+  } else if (currentStep > 7) {
+    // Show the result after the last question
+    showResult();
+  }
+}
+
+// Event listener for button click (questions)
+document.querySelectorAll('.option').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const choice = e.target.dataset.choice;
+    const question = e.target.dataset.question;
+
+    // Save user's choice
+    userChoices[question - 1] = choice;
+
+    // Show next step (question or result)
+    showNextStep();
+
+    // Calculate compatibility after each question
+    checkCompatibility();
+  });
+});
+
+// Calculate compatibility percentage
+function checkCompatibility() {
+  let compatibility = 0;
+  for (let i = 0; i < userChoices.length; i++) {
+    if (userChoices[i] === myChoices[i]) {
+      compatibility += 100 / myChoices.length;
+    }
+  }
+
+  const compatibilityPercentage = Math.round(compatibility);
+  document.getElementById('compatibility-percentage').textContent = compatibilityPercentage;
+
+  const compatibilityDescription = getCompatibilityDescription(compatibilityPercentage);
+  document.getElementById('compatibility-description').innerHTML = compatibilityDescription; // Use innerHTML for line breaks
+}
+
+// Get compatibility description based on percentage
+function getCompatibilityDescription(percentage) {
+  if (percentage >= 90) {
+    return "<strong>THE DYNAMIC DUO OF DESIGN!</strong><br><br>We’re a design dream team! Our styles complement each other perfectly, and we work effortlessly together. If we started a design studio, we’d be the power duo everyone envies.";
+  } else if (percentage >= 70) {
+    return "<strong>ALMOST IN PERFECT SYNC!</strong><br>We make a great team! Our different preferences balance each other out, and we know how to make it work. We might not always agree, but the results are still fantastic.";
+  } else if (percentage >= 50) {
+    return "<strong>LET’S SEE HOW THIS WORKS...</strong><br>We have potential but need some adjustments. Our design styles clash at times, but with a little compromise, we’ll find a groove and create something unique.";
+  } else if (percentage >= 30) {
+    return "<strong>CREATIVE TENSION IN THE AIR!</strong><br>But some tension leads to innovation. If we’re open-minded, we might surprise ourselves with something amazing.";
+  } else {
+    return "<strong>DESIGN DIVORCE PENDING!</strong><br>Our philosophies are worlds apart, and it’s causing some frustration. Working together feels tough, but this might be a sign to focus on solo projects instead.";
+  }
+}
+
+// Show result
+function showResult() {
+  document.querySelector('.result').style.display = 'block';
+}
+
+// Share results by directing to Instagram profile
+function shareResults() {
+  const compatibilityPercentage = document.getElementById('compatibility-percentage').textContent;
+  const compatibilityDescription = document.getElementById('compatibility-description').textContent;
+
+  // Prepare the share text (you can customize this as needed)
+  const shareText = `My Compatibility Result: ${compatibilityPercentage}%\n\n${compatibilityDescription}\n#DesignCompatibilityGame`;
+
+  // Open your Instagram profile
+  const instagramProfileUrl = `https://www.instagram.com/itsceciliado/`;
+
+  // Open Instagram profile page in a new tab
+  window.open(instagramProfileUrl, '_blank');
+}
+
+
+
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger-icon');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // Toggle the "active" class
+});
+
+
+  </script>
+</body>
+
+</html>
