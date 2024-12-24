@@ -272,7 +272,7 @@ footer a {
   margin: 0 0; /* Space between social links */
 }
 footer p {
-  margin: 0.5vw;
+  margin: 0.2vw;
   text-align: center;
 }
 
@@ -305,7 +305,7 @@ footer p a:hover {
   }
 
   .key-visual .image-stack {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0.8) 94%, rgba(0, 0, 0, 0) 99%);
@@ -316,6 +316,7 @@ footer p a:hover {
     -webkit-mask-repeat: no-repeat;
     object-position: center center; /* Keep the typo image centered */
     filter: contrast(1.1) hue-rotate(10deg);
+    overflow: visible;
 
   }
 
@@ -332,13 +333,23 @@ footer p a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: contain; /* Ensure the typo image is fully visible without cropping */
     object-position: center center; /* Keep the typo image centered */
-    animation: moveScaleTypo 5s ease-in-out infinite;
     overflow: visible;
+    animation: moveScaleTypo 5s ease-in-out infinite;
   }
+.typo-container {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the typo image is fully visible without cropping */
+  object-position: center center; /* Keep the typo image centered */
+  overflow: visible;
+  padding: 0;
+  position: relative;
+}
+
 
   /* Text Box */
   .key-visual .text-box {
@@ -923,6 +934,7 @@ nav a {
   p, a {
       font-size: 0.7rem;
   }
+
 }
 
 
